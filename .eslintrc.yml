@@ -1,0 +1,12 @@
+parser: babel-eslint
+extends: airbnb
+env:
+  browser: true
+  mocha: true
+plugins:
+  - react
+  - jsx-a11y
+  - import
+settings:
+  import/core-modules:
+    - electron

@@ -1,0 +1,31 @@
+{
+  "name": "counter-flowtype-electron",
+  "version": "0.0.1",
+  "description": "counter-flowtype-electron",
+  "main": "main.js",
+  "license": "Closed",
+  "private": true,
+  "scripts": {
+    "start": "npm run build && electron main.js",
+    "build": "webpack",
+    "lint": "eslint \"./src/**/*.{js,jsx}\" \"./src/*.{js,jsx}\" \"./*.js\""
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.2.2",
+    "babel-preset-react": "^6.23.0",
+    "babel-register": "^6.24.0",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2 || ^4.0.0",
+    "eslint-plugin-react": "^6.9.0",
+    "webpack": "^2.3.0"
+  },
+  "dependencies": {
+    "electron": "^1.6.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}
