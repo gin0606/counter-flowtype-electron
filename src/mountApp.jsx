@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AppContainer from './components/AppContainer';
 
 export default (element) => {
-  ReactDOM.render(<h1>Hello World!</h1>, element);
+  ReactDOM.render(<AppContainer />, element);
 };
