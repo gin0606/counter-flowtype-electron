@@ -1,11 +1,11 @@
 // @flow
 import EventEmitter from 'events';
 import dispatcher from 'dispatcher';
-import type { Action } from 'action/Actions';
+import Action from 'action/Actions';
 
 class Store extends EventEmitter {
   count: number
-  actionHandler: () => void
+  actionHandler: (Action) => void
 
   constructor() {
     super();

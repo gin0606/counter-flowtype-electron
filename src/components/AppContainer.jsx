@@ -3,7 +3,7 @@ import React from 'react';
 import Store from 'store/Store';
 import dispatcher from 'dispatcher';
 
-/* eslint-disable react/prefer-stateless-function, react/no-multi-comp */
+/* eslint-disable react/prefer-stateless-function, react/no-multi-comp, class-methods-use-this */
 
 class Counter extends React.PureComponent {
   props: {
@@ -25,6 +25,8 @@ class CounterContainer extends React.Component {
     count: number,
   }
   onChange: () => void
+  onClickIncrement: () => void
+  onClickDecrement: () => void
 
   constructor(...args) {
     super(...args);
@@ -34,6 +36,8 @@ class CounterContainer extends React.Component {
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onClickIncrement = this.onClickIncrement.bind(this);
+    this.onClickDecrement = this.onClickDecrement.bind(this);
   }
 
   componentDidMount() {
@@ -50,12 +54,21 @@ class CounterContainer extends React.Component {
     });
   }
 
+  onClickIncrement() {
+    // ここでエラー出て欲しい
+    dispatcher.dispatch({ type: 'hoge' });
+  }
+
+  onClickDecrement() {
+    dispatcher.dispatch({});
+  }
+
   render() {
     return (<div>
       <Counter
         count={this.state.count}
-        onClickIncrement={() => { dispatcher.dispatch({ type: 'asdf', count: 1 }); }}
-        onClickDecrement={() => { dispatcher.dispatch({ type: 'decrement', count: 1 }); }}
+        onClickIncrement={this.onClickIncrement}
+        onClickDecrement={this.onClickDecrement}
       />
     </div>)
     ;
