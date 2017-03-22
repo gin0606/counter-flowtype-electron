@@ -1,6 +1,7 @@
 // @flow
 import EventEmitter from 'events';
 import dispatcher from 'dispatcher';
+import type { Action } from 'action/Actions';
 
 class Store extends EventEmitter {
   count: number
@@ -8,16 +9,19 @@ class Store extends EventEmitter {
 
   constructor() {
     super();
+
+    this.count = 0;
+
     this.actionHandler = this.actionHandler.bind(this);
     dispatcher.register(this.actionHandler);
   }
 
-  actionHandler(payload: any) {
-    switch (payload.actionType) {
-      case 'INCREMENT':
+  actionHandler(action: Action) {
+    switch (action.type) {
+      case 'increment':
         this.count += 1;
         break;
-      case 'DECREMENT':
+      case 'decrement':
         this.count -= 1;
         break;
       default:

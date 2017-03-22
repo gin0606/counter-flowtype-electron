@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import Store from 'store/Store';
+import dispatcher from 'dispatcher';
 
 /* eslint-disable react/prefer-stateless-function, react/no-multi-comp */
 
@@ -53,8 +54,8 @@ class CounterContainer extends React.Component {
     return (<div>
       <Counter
         count={this.state.count}
-        onClickIncrement={() => {}}
-        onClickDecrement={() => {}}
+        onClickIncrement={() => { dispatcher.dispatch({ type: 'asdf', count: 1 }); }}
+        onClickDecrement={() => { dispatcher.dispatch({ type: 'decrement', count: 1 }); }}
       />
     </div>)
     ;

@@ -1,19 +1,8 @@
 // @flow
-import dispatcher from 'dispatcher';
 
-export function increment() {
-  dispatcher.dispatch({
+export type Action =
+  {
     type: 'increment',
-  });
-}
-
-export function decrement() {
-  dispatcher.dispatch({
+  } | {
     type: 'decrement',
-  });
-}
-
-export default {
-  increment,
-  decrement,
-};
+  };
