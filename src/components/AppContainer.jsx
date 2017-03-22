@@ -7,9 +7,15 @@ import Store from 'store/Store';
 class Counter extends React.PureComponent {
   props: {
     count: number,
+    onClickIncrement: () => void,
+    onClickDecrement: () => void,
   }
   render() {
-    return <p>count: {this.props.count}</p>;
+    return (<div>
+      <p>count: {this.props.count}</p>
+      <button onClick={this.props.onClickIncrement}>+1</button>
+      <button onClick={this.props.onClickDecrement}>-1</button>
+    </div>);
   }
 }
 
@@ -44,7 +50,14 @@ class CounterContainer extends React.Component {
   }
 
   render() {
-    return <Counter count={this.state.count} />;
+    return (<div>
+      <Counter
+        count={this.state.count}
+        onClickIncrement={() => {}}
+        onClickDecrement={() => {}}
+      />
+    </div>)
+    ;
   }
 }
 
