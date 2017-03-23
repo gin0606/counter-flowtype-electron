@@ -1,5 +1,6 @@
 // @flow
 
-export default class Action {
-  type: string
-}
+export type Action =
+  {
+    type: 'increment' | 'decrement',
+  };

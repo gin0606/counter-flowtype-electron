@@ -55,12 +55,11 @@ class CounterContainer extends React.Component {
   }
 
   onClickIncrement() {
-    // ここでエラー出て欲しい
-    dispatcher.dispatch({ type: 'hoge' });
+    dispatcher.dispatch({ type: 'increment', count: 1 });
   }
 
   onClickDecrement() {
-    dispatcher.dispatch({});
+    dispatcher.dispatch({ type: 'decrement', count: 1 });
   }
 
   render() {

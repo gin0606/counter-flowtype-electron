@@ -1,7 +1,7 @@
 // @flow
 import EventEmitter from 'events';
 import dispatcher from 'dispatcher';
-import Action from 'action/Actions';
+import type { Action } from 'action/Actions';
 
 class Store extends EventEmitter {
   count: number
