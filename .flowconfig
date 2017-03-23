@@ -1,6 +1,5 @@
 [ignore]
-.*/node_modules/flux/lib/*
-.*/node_modules/fbjs/*
+.*/node_modules/.*
 
 [include]
 
@@ -10,3 +9,5 @@
 [options]
 module.system.node.resolve_dirname=node_modules
 module.system.node.resolve_dirname=src
+
+experimental.const_params=true

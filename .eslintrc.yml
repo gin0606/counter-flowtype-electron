@@ -1,5 +1,7 @@
 parser: babel-eslint
-extends: airbnb
+extends:
+  - airbnb
+  - plugin:flowtype/recommended
 env:
   browser: true
   mocha: true
@@ -7,10 +9,13 @@ plugins:
   - react
   - jsx-a11y
   - import
+  - flowtype
 settings:
   import/core-modules:
     - electron
-  import/resolver: webpack 
+  import/resolver: webpack
+  flowtype:
+    onlyFilesWithFlowAnnotation: true
 rules:
   react/sort-comp:
     - error
