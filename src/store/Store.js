@@ -1,49 +1,28 @@
 // @flow
-import EventEmitter from 'events';
 import dispatcher from 'dispatcher';
+import { ReduceStore } from 'flux/utils';
 import type { Action } from 'action/Actions';
 
-class Store extends EventEmitter {
-  count: number
-  actionHandler: (Action) => void
+type State = { count: number };
 
+class Store extends ReduceStore<Action, State> {
   constructor() {
-    super();
-
-    this.count = 0;
-
-    this.actionHandler = this.actionHandler.bind(this);
-    dispatcher.register(this.actionHandler);
+    super(dispatcher);
   }
 
-  actionHandler(action: Action) {
+  getInitialState(): State {
+    return { count: 0 };
+  }
+
+  reduce(state: State, action: Action): State {
     switch (action.type) {
       case 'increment':
-        this.count += 1;
-        break;
+        return { count: state.count + 1 };
       case 'decrement':
-        this.count -= 1;
-        break;
+        return { count: state.count - 1 };
       default:
-        return;
+        return state;
     }
-    this.emitChange();
-  }
-
-  getCount(): number {
-    return this.count;
-  }
-
-  emitChange() {
-    this.emit('changeEvent');
-  }
-
-  addChangeListener(callback: () => void) {
-    this.on('changeEvent', callback);
-  }
-
-  removeChangeListener(callback: () => void) {
-    this.removeListener('changeEvent', callback);
   }
 }
 
