@@ -17,6 +17,8 @@ settings:
   flowtype:
     onlyFilesWithFlowAnnotation: true
 rules:
+  class-methods-use-this:
+    - off
   react/sort-comp:
     - error
     - order:
